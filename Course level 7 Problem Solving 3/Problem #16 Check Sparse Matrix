@@ -1,0 +1,63 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+
+bool CheckMatrixSparce(int matrix1[3][3], short rows, short cols)
+{
+    int ZerosCount = 0;
+    int RemainNumberCount = 0;
+    for (short i = 0; i < rows; i++)
+    {
+        for (short j = 0; j < cols; j++)
+        {
+            if (matrix1[i][j] == 0)
+              ZerosCount++;
+            else
+             RemainNumberCount++;
+        }
+    }
+    
+    if (ZerosCount > RemainNumberCount++)
+    {
+        return true;
+    }
+
+    return false;
+
+}
+
+void PrintMatrix(int matrix[3][3], short rows, short cols)
+{
+    for (short i = 0; i < rows; i++)
+    {
+        for (short j = 0; j < cols; j++)
+        {
+            cout << setw(3) << matrix[i][j] << "\t";
+        }
+        cout << "\n";
+    }
+
+}
+int main()
+{
+    srand(static_cast<unsigned int>(time(0)));
+
+    int matrix1[3][3] = { {1,0,1},{0,1,0},{0,0,1} };
+
+    cout << "Matrix1: \n";
+    PrintMatrix(matrix1, 3, 3);
+    cout << "\n";
+
+    if (CheckMatrixSparce(matrix1, 3, 3))
+       cout << "Yes: Matrix is Sparce..!" << endl;
+    else
+       cout << "No: Matrix is NOT Sparce..!" << endl;
+    
+
+
+
+
+    system("pause > 0");
+}

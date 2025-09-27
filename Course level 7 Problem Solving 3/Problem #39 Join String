@@ -1,0 +1,29 @@
+#include <string> 
+#include <iostream> 
+#include <vector>
+using namespace std;
+
+string JoinStrings(vector <string> vstring , string delimt)
+{
+    string S1="";
+
+    for (string& i : vstring)
+    {
+        S1 += i + delimt;
+    }
+    return S1.substr(0, S1.length() - delimt.length());
+}
+
+
+int main()
+{
+    vector<string> vstring = {"Mohammad","Fadi","Ali","Maher"};
+
+    cout << "Vector After Join: \n";
+    cout << JoinStrings(vstring , " ");
+
+    
+    system("pause > 0");
+    return 0;
+}
+ 

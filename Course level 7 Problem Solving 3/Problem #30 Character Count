@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string ReadString()
+{
+	string s1;
+	cout << "Please Enter Your string?" << endl;
+	getline(cin, s1);
+
+	return s1;
+}
+
+char ReadCharacter()
+{
+	char c1;
+	cout << "Please Enter a  Character?" << endl;
+	cin >> c1;
+
+	return c1;
+}
+
+short CharacterCount(string s1 , char c1)
+{ 
+	short Counter = 0;
+	for (short i = 0; i < s1.length(); i++ )
+	{
+		if (s1[i] == c1)
+		{
+			Counter++;
+		}
+	}
+
+	return Counter;
+}
+
+int main()
+{
+	string s1 = ReadString();
+	char c1 = ReadCharacter();
+
+	cout << "Letter '" << c1 << "' " << "Count = " << CharacterCount(s1, c1);
+
+}
+ 

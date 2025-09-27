@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+
+void PrintFibonacciSeries(int size)
+{
+	int PreviousNumber1 = 1, PreviousNumber2 = 1 , FiboSum = 0;
+	cout << "Fibo Numbers: \n";
+	cout << "1  ";
+	for (int i = 2; i <= size; i++)
+	{
+		cout << PreviousNumber1 << "  ";
+		FiboSum = PreviousNumber1 + PreviousNumber2;
+		PreviousNumber2 = PreviousNumber1;
+		PreviousNumber1 = FiboSum;
+	}
+
+}
+
+
+
+int main()
+{
+	PrintFibonacciSeries(10);
+}
+
