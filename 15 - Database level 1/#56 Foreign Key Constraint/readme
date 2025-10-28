@@ -1,0 +1,69 @@
+SQL FOREIGN KEY
+In this tutorial, we'll learn about the FOREIGN KEY in SQL and how to use them with the help of examples.
+
+In SQL, we can create a relationship between two tables using the FOREIGN KEY constraint.
+
+
+
+Here, the customer_id field in the Orders table is FOREIGN KEY which references the id field in the Customers table.
+
+This means that the value of the customer_id (of the Orders table) must be a value from the id column (of the Customers table).
+
+Note: The Foreign key can be referenced to any column in the parent table. However, it is general practice to reference the foreign key to the primary key of the parent table.
+
+
+
+Creating FOREIGN Key
+Now, let's see how we can create foreign key constraints in a database.
+
+-- This table doesn't have a foreign key
+CREATE TABLE Customers (
+  id INT ,
+  first_name VARCHAR(40),
+  last_name VARCHAR(40),
+  age INT,
+  country VARCHAR(10),
+  PRIMARY KEY (id)
+);
+
+
+-- Adding foreign key to the customer_id field
+-- The foreign key references to the id field of the Customers table
+CREATE TABLE Orders (
+  order_id INT,
+  item VARCHAR(40),
+  amount INT,
+  customer_id INT REFERENCES Customers(id),
+  PRIMARY KEY (order_id)
+);
+Run Code
+
+Here, the value of the customer_id column in the Orders table references the row in another table named Customers with its id column.
+
+Note: The above code works in all major database systems. However, there may be the alternate syntax to create foreign keys depending on the database. Refer to their respective database documentation for more information.
+
+Foreign Key with Alter Table
+It is possible to add the FOREIGN KEY constraint to an existing table using the ALTER TABLE command. For example,
+
+-- This table doesn't have a foreign key
+CREATE TABLE Customers (
+  id INT ,
+  first_name VARCHAR(40),
+  last_name VARCHAR(40),
+  age INT,
+  country VARCHAR(10),
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Orders (
+  order_id INT,
+  item VARCHAR(40),
+  amount INT,
+  customer_id INT ,
+  PRIMARY KEY (order_id)
+);
+
+-- Adding foreign key to the customer_id field using alter
+
+ALTER TABLE Orders
+ADD FOREIGN KEY (customer_id) REFERENCES Customers(id);
