@@ -1,0 +1,57 @@
+The SQL HAVING Clause
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions in a direct way.
+
+HAVING Syntax
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
+mysql
+
+
+select DepartmentID, TotalCount=Count(MonthlySalary), 
+	   TotalSum=Sum(MonthlySalary),
+	   Average=Avg(MonthlySalary),
+	   MinSalary=Min(MonthlySalary),
+	   MaxSalary=Max(MonthlySalary) 
+	   
+	   from Employees
+	
+       Group By DepartmentID
+	  
+	   order by DepartmentID
+
+
+--Having is the where satement for group by
+select DepartmentID, TotalCount=Count(MonthlySalary), 
+	   TotalSum=Sum(MonthlySalary),
+	   Average=Avg(MonthlySalary),
+	   MinSalary=Min(MonthlySalary),
+	   MaxSalary=Max(MonthlySalary) 
+	   
+	   from Employees
+       Group By DepartmentID
+	  having Count(MonthlySalary) > 100
+
+
+
+-- Same solution without having :-)
+select * from 
+(
+
+   select DepartmentID, TotalCount=Count(MonthlySalary), 
+	   TotalSum=Sum(MonthlySalary),
+	   Average=Avg(MonthlySalary),
+	   MinSalary=Min(MonthlySalary),
+	   MaxSalary=Max(MonthlySalary) 
+	   
+	   from Employees
+	
+       Group By DepartmentID
+	  
+) R1
+
+where R1.TotalCount> 100;
