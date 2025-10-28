@@ -1,0 +1,61 @@
+The SQL SELECT TOP Clause
+The SELECT TOP clause is used to specify the number of records to return.
+
+The SELECT TOP clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.
+
+Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
+
+SQL Server / MS Access Syntax:
+
+SELECT TOP number|percent column_name(s)
+FROM table_name
+WHERE condition;
+
+mysql
+
+Select * from Employees;
+
+
+-- This will show top 5 employees.
+Select top 5 * from Employees;
+
+
+-- This will show top 10% of the data.
+select top 10 percent * from Employees;
+
+-- this will show the all salaries ordered from the heighest to lowest.
+select  MonthlySalary from employees
+order by MonthlySalary Desc;
+
+
+
+-- this will show the all salaries ordered from the heighest to lowest without redundancy.
+select distinct MonthlySalary from employees
+order by MonthlySalary Desc;
+
+-- this will show the heighest 3 salaries.
+select  distinct  top 3 MonthlySalary from employees
+order by MonthlySalary Desc;
+
+
+--This will show all employees who takes one of the heighest 3 salaries.
+
+select ID , FirstName, MonthlySalary from Employees where MonthlySalary In
+(
+	select  distinct  top 3 MonthlySalary from employees
+	order by MonthlySalary Desc
+)
+
+Order By MonthlySalary Desc
+
+
+
+--This will show all employees who takes one of the Lowest 3 salaries.
+select ID , FirstName, MonthlySalary from Employees where MonthlySalary In
+(
+	select  distinct  top 3 MonthlySalary from employees
+	order by MonthlySalary ASC
+)
+
+Order By MonthlySalary ASC
+
