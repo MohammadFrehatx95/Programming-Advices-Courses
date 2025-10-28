@@ -1,0 +1,20 @@
+To restore the HR_Database:
+
+Download "HR_Database.bak" file and place it on your c:\ drive.
+Open Your SQL Server.
+Open New Query Window.
+Run the following Script.
+Refresh Database.
+Done.
+Restore Database HR_Database from disk ='c:\HR_Database.bak';
+
+
+
+اللي بطلع عنده خطأ بإنشاء الديجرام يستخدم هالكود بالكويري
+
+
+
+use HR_Database;
+
+EXEC sp_changedbowner 'sa';
+
