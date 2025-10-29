@@ -1,0 +1,106 @@
+SQL JOIN
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+Different Types of SQL JOINs
+Here are the different types of the JOINs in SQL:
+
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+
+
+
+
+
+SQL INNER JOIN
+The SQL INNER JOIN joins two tables based on a common column, and selects records that have matching values in these columns.
+
+
+
+
+
+
+
+Example
+SELECT Customers.customer_id, Customers.first_name, Orders.amount
+FROM Customers
+INNER JOIN Orders
+ON Customers.customer_id = Orders.customer;
+
+
+Here, the SQL command selects customer_id and first_name columns (from the Customers table) and the amount column (from the Orders table).
+
+And, the result set will contain those rows where there is a match between customer_id (of the Customers table) and customer (of the Orders table).
+
+Syntax of INNER JOIN
+The syntax of INNER JOIN is:
+
+SELECT columns
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+INNER JOIN With WHERE Clause
+Here's an example of the INNER JOIN with the WHERE clause:
+
+SELECT Customers.customer_id, Customers.first_name, Orders.amount
+FROM Customers
+INNER JOIN Orders
+ON Customers.customer_id = Orders.customer
+WHERE Orders.amount >= 500;
+
+
+Here, the SQL command joins two tables and selects rows where the amount is greater than or equal to 500.
+
+mysql
+-- Join and Inner Join are the same
+
+select * from Customers;
+
+select * from Orders;
+
+
+SELECT Customers.CustomerID, Customers.Name, Orders.Amount
+FROM Customers 
+JOIN Orders 
+ON Customers.CustomerID = Orders.CustomerID;
+
+
+
+SELECT Customers.CustomerID, Customers.Name, Orders.Amount
+FROM Customers 
+Inner JOIN Orders 
+ON Customers.CustomerID = Orders.CustomerID;
+mysql
+
+
+--This code for HR_Database
+
+--Inner Join two Tables
+SELECT        Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName
+FROM            Employees INNER JOIN
+                         Departments ON Employees.DepartmentID = Departments.ID
+
+
+--Inner joind with where
+SELECT        Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName
+FROM            Employees INNER JOIN
+                         Departments ON Employees.DepartmentID = Departments.ID
+where Departments.Name = 'IT';
+
+
+--Inner Join Three Tables
+SELECT        Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName, Countries.Name AS CountryName
+FROM            Employees INNER JOIN
+                         Departments ON Employees.DepartmentID = Departments.ID INNER JOIN
+                         Countries ON Employees.CountryID = Countries.ID
+
+
+						 
+--Inner Join Three Tables with where
+SELECT        Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName, Countries.Name AS CountryName
+FROM            Employees INNER JOIN
+                         Departments ON Employees.DepartmentID = Departments.ID INNER JOIN
+                         Countries ON Employees.CountryID = Countries.ID
+	where Countries.Name = 'USA';
