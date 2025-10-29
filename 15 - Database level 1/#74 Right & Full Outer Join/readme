@@ -1,0 +1,55 @@
+SQL RIGHT JOIN Keyword
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match.
+
+
+
+
+
+RIGHT JOIN Syntax
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+
+Note: In some databases RIGHT JOIN is called RIGHT OUTER JOIN.
+
+
+
+
+
+SQL FULL OUTER JOIN Keyword
+The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+
+Tip: FULL OUTER JOIN and FULL JOIN are the same.
+
+FULL OUTER JOIN Syntax
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition;
+
+
+
+Note: FULL OUTER JOIN can potentially return very large result-sets!
+
+
+
+mysql
+
+--Inner Join
+SELECT        Customers.CustomerID, Customers.Name, Orders.Amount
+FROM            Customers INNER JOIN
+                         Orders ON Customers.CustomerID = Orders.CustomerID
+--Left Join
+SELECT        Customers.CustomerID, Customers.Name, Orders.Amount
+FROM            Customers LEFT OUTER JOIN
+                         Orders ON Customers.CustomerID = Orders.CustomerID
+--Right Join
+SELECT        Customers.CustomerID, Customers.Name, Orders.Amount
+FROM            Customers RIGHT OUTER JOIN
+                         Orders ON Customers.CustomerID = Orders.CustomerID
+--Full Join
+SELECT        Customers.CustomerID, Customers.Name, Orders.Amount
+FROM            Customers FULL OUTER JOIN
+                         Orders ON Customers.CustomerID = Orders.CustomerID
