@@ -1,0 +1,52 @@
+The SQL CASE Expression
+The CASE expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
+
+If there is no ELSE part and no conditions are true, it returns NULL.
+
+CASE Syntax
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+
+mysql
+
+
+select ID, FirstName, LastName, GendorTitle =
+CASE
+    WHEN Gendor='M' THEN 'Male'
+    WHEN Gendor='F' THEN 'Female'
+    ELSE 'Unknown'
+END
+
+from Employees
+
+-----------------------------------------
+
+select ID, FirstName, LastName,  GendorTitle =
+CASE
+    WHEN Gendor='M' THEN 'Male'
+    WHEN Gendor='F' THEN 'Female'
+    ELSE 'Unknown'
+END,
+
+Status =
+CASE
+    WHEN ExitDate is null THEN 'Active'
+    WHEN Gendor is Not null THEN 'Resigned'
+END
+from Employees
+
+-------------------------------------------------------
+
+select ID, FirstName, LastName,MonthlySalary,
+
+NewSalaryToBe =
+CASE
+    WHEN Gendor='M' THEN MonthlySalary * 1.1
+    WHEN Gendor='F' THEN MonthlySalary * 1.15
+   
+END
+from Employees
